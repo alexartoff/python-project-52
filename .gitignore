@@ -104,7 +104,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-task_manager/task_manager/.env
+task_manager/.env
 .venv
 env/
 venv/
@@ -137,4 +137,4 @@ dmypy.json
 #PyCharm
 .idea
 /tests/test_donwload_more.py
-/task_manager/task_manager/.env
+/task_manager/.env
