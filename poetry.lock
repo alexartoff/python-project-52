@@ -39,6 +39,20 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "gunicorn"
+version = "20.1.0"
+description = "WSGI HTTP Server for UNIX"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.extras]
+eventlet = ["eventlet (>=0.24.1)"]
+gevent = ["gevent (>=1.4.0)"]
+setproctitle = ["setproctitle"]
+tornado = ["tornado (>=0.2)"]
+
+[[package]]
 name = "psycopg2"
 version = "2.9.4"
 description = "psycopg2 - Python-PostgreSQL Database Adapter"
@@ -76,12 +90,13 @@ python-versions = ">=2"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "db0f694df9be70cb8e1de5affe14417249147b1943b10630fd5937c25d2e1b74"
+content-hash = "a5d51dcde6c78fd4ca3db9a79aae5573fd51c64c611e8e146a565909f5ba8535"
 
 [metadata.files]
 asgiref = []
 "backports.zoneinfo" = []
 django = []
+gunicorn = []
 psycopg2 = []
 python-dotenv = []
 sqlparse = []
