@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "hexlet-code"
+version = "0.1.0"
+description = "education project 'Task manager'"
+authors = ["alexandertarakanov <alex.artoff@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^4.1.1"
+python-dotenv = "^0.21.0"
+psycopg2 = "^2.9.4"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
