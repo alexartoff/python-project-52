@@ -10,19 +10,23 @@ python-versions = ">=3.7"
 tests = ["mypy (>=0.800)", "pytest-asyncio", "pytest"]
 
 [[package]]
-name = "backports.zoneinfo"
-version = "0.2.1"
-description = "Backport of the standard library zoneinfo module"
+name = "beautifulsoup4"
+version = "4.11.1"
+description = "Screen-scraping library"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.6.0"
+
+[package.dependencies]
+soupsieve = ">1.2"
 
 [package.extras]
-tzdata = ["tzdata"]
+html5lib = ["html5lib"]
+lxml = ["lxml"]
 
 [[package]]
 name = "django"
-version = "4.1.1"
+version = "4.1.2"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
 optional = false
@@ -30,13 +34,24 @@ python-versions = ">=3.8"
 
 [package.dependencies]
 asgiref = ">=3.5.2,<4"
-"backports.zoneinfo" = {version = "*", markers = "python_version < \"3.9\""}
 sqlparse = ">=0.2.2"
 tzdata = {version = "*", markers = "sys_platform == \"win32\""}
 
 [package.extras]
 argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
+
+[[package]]
+name = "django-bootstrap4"
+version = "22.2"
+description = "Bootstrap 4 for Django"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+beautifulsoup4 = ">=4.8.0"
+Django = ">=3.2"
 
 [[package]]
 name = "gunicorn"
@@ -72,6 +87,14 @@ python-versions = ">=3.7"
 cli = ["click (>=5.0)"]
 
 [[package]]
+name = "soupsieve"
+version = "2.3.2.post1"
+description = "A modern CSS selector implementation for Beautiful Soup."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "sqlparse"
 version = "0.4.3"
 description = "A non-validating SQL parser."
@@ -89,15 +112,20 @@ python-versions = ">=2"
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.8"
-content-hash = "a5d51dcde6c78fd4ca3db9a79aae5573fd51c64c611e8e146a565909f5ba8535"
+python-versions = "^3.10"
+content-hash = "b3e6c1557c64097362b9592e538115b6e1ba6e7f48bab38fd4e9ec4f56638ac7"
 
 [metadata.files]
 asgiref = []
-"backports.zoneinfo" = []
+beautifulsoup4 = []
 django = []
+django-bootstrap4 = []
 gunicorn = []
 psycopg2 = []
 python-dotenv = []
+soupsieve = [
+    {file = "soupsieve-2.3.2.post1-py3-none-any.whl", hash = "sha256:3b2503d3c7084a42b1ebd08116e5f81aadfaea95863628c80a3b774a11b7c759"},
+    {file = "soupsieve-2.3.2.post1.tar.gz", hash = "sha256:fc53893b3da2c33de295667a0e19f078c14bf86544af307354de5fcf12a3f30d"},
+]
 sqlparse = []
 tzdata = []

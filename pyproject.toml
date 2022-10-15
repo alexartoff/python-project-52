@@ -3,13 +3,15 @@ name = "hexlet-code"
 version = "0.1.0"
 description = "education project 'Task manager'"
 authors = ["alexandertarakanov <alex.artoff@gmail.com>"]
+packages = [{ include = "task_manager" },]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 Django = "^4.1.1"
 python-dotenv = "^0.21.0"
 psycopg2 = "^2.9.4"
 gunicorn = "^20.1.0"
+django-bootstrap4 = "^22.2"
 
 [tool.poetry.dev-dependencies]
 

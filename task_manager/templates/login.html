@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="username">
+        <input type="password", name="password">
+        <button type="submit">OK</button>
+    </form>
+
+</div>
+{% endblock content %}
