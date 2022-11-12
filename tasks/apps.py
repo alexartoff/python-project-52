@@ -1,6 +1,8 @@
 from django.apps import AppConfig
+from django.utils.translation import gettext_lazy as _
 
 
-class TaskappConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
+class TasksConfig(AppConfig):
     name = 'tasks'
+    verbose_name = _("=Task=")
+    verbose_name_plural = _("=Tasks=")

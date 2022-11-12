@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{{ title }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="{% trans 'Save' %}">
+        <input type="button" value="{% trans 'Cancel' %}" onclick="window.history.go(-1); return false;">
+    </form>
+
+</div>
+{% endblock content %}

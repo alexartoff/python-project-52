@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{{ title }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <p>{% trans 'Are you sure want delete' %} "{{ object }}"?</p>
+        {{ form }}
+        <input type="submit" value="{% trans 'Confirm' %}">
+        <input type="button" value="{% trans 'Cancel' %}" onclick="window.history.go(-1); return false;">
+    </form>
+
+</div>
+{% endblock content %}

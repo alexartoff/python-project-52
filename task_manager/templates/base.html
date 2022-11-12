@@ -6,37 +6,63 @@
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ title }}</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-    <a class="navbar-brand" href="/">"Менеджер задач"{% translate 'Task manager' %}</a>
-    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarToggleExternalContent">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-brand" href="{% url 'index_page' %}">{% translate 'Task manager' %}</a>
+    <ul class="navbar-nav ml-2 mr-2">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users_list' %}">{% trans "Users" %}</a>
+        </li>
+    </ul>
     <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
-        <ul class="navbar-nav mr-auto">
+        {% if user.is_authenticated %}
+        <ul class="navbar-nav ml-2 mr-2">
             <li class="nav-item">
-                <a class="nav-link" href="#">Пользователи</a>
+                <a class="nav-link" href="{% url 'statuses_list' %}">{% trans "Statuses" %}</a>
             </li>
         </ul>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-2 mr-2">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'labels_list' %}">{% trans "Labels" %}</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-2 mr-2">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'tasks_list' %}">{% trans "Tasks" %}</a>
+            </li>
+        </ul>
+        <span class="navbar-text ml-auto">
+            {% trans "You're logged in as" %} {{ user.username }} | <a href="{% url 'user_logout' %}">{% trans 'Logout' %}</a>
+        </span>
+        {% else %}
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'user_login' %}">{% trans "Enter" %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Регистрация</a>
+                <a class="nav-link" href="{% url 'register_user' %}">{% trans "Register" %}</a>
             </li>
         </ul>
+        {% endif %}
         {% get_current_language as LANGUAGE_CODE %}
         {% get_available_languages as LANGUAGES %}
         {% get_language_info_list for LANGUAGES as languages %}
 
         <a style="font-size: 12px; color: grey; margin-bottom: -2px; margin-left: 10px;"
            href="/{{ languages.0.code }}/">EN</a>
-        <a style="font-size: 12px; color: grey; margin-bottom: -2px; margin-left: 5px;" href="/{{ languages.1.code }}/">RU</a>
+        <a style="font-size: 12px; color: grey; margin-bottom: -2px; margin-left: 5px;"
+           href="/{{ languages.1.code }}/">RU</a>
+        <form class="form-inline my-2 my-lg-0" action="{% url 'search_result' %}" method="get">
+            <input class="form-control ml-3 mr-sm-2" type="search" name="q" placeholder="{% trans 'Search task' %}" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans 'Search' %}</button>
+        </form>
     </div>
 </nav>
+<div class="container wrapper flex-grow-1">
+    {% bootstrap_messages %}
+</div>
 {% block content %}{% endblock content %}
 </body>
 </html>

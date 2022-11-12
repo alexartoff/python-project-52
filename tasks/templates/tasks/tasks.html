@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{{ title }}</h1>
+
+    <p>
+        <a href="create">{% trans 'Add task' %}</a>
+    </p>
+
+    <div class="card mb-2">
+        <div class="card-body bg-light">
+            <form method="get">
+                {% bootstrap_field filter.form.status field_class='ml-3' %}
+                {% bootstrap_field filter.form.executor field_class='ml-3' %}
+                {% bootstrap_field filter.form.labels field_class='ml-3' %}
+                {% bootstrap_field filter.form.own_tasks field_class='ml-3' %}
+                <input type="submit"/>
+            </form>
+        </div>
+    </div>
+
+    <table class="table table-hover table-striped table-bordered">
+        <thead align="center">
+        <tr>
+            <th>id</th>
+            <th>{% trans 'Name' %}</th>
+            <th>{% trans 'Status' %}</th>
+            <th>{% trans 'Author' %}</th>
+            <th>{% trans 'Executor' %}</th>
+            <th>{% trans 'Created' %}</th>
+            <th>{% trans 'Action' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if filter.qs %}
+        {% for t in filter.qs %}
+        <tr>
+            <td>{{ t.id }}</td>
+            <td>{{ t.name }}</td>
+            <td>{{ t.status }}</td>
+            <td><strong>{{ t.author }}</strong></td>
+            <td>{{ t.executor }}</td>
+            <td>{{ t.created_date|date:"d.m.Y" }}</td>
+            <td>
+                [<a href="{{ t.id }}/update/">{% trans 'Edit' %}</a>]
+                {% if t.author == user %}
+                <br>[<a href="{{ t.id }}/delete/">{% trans 'Delete' %}</a>]
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock content %}

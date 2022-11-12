@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{{ title }}</h1>
+
+    <table class="table table-hover table-striped table-bordered">
+        <thead align="center">
+        <tr>
+            <th>id</th>
+            <th>{% trans 'Username' %}</th>
+            <th>{% trans 'Fullname' %}</th>
+            <th>{% trans 'Created' %}</th>
+            <th>{% trans 'Action' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if users %}
+        {% for u in users %}
+        {% if not u.is_superuser %}
+        <tr>
+
+            <td>{{ u.id }}</td>
+            <td>{{ u.username }}</td>
+            <td>{{ u.get_full_name }}</td>
+            <td>{{ u.date_joined|date:"d.m.Y" }}</td>
+            <td>
+                {% if u == user %}
+                [<a href="{{ user.id }}/update/">{% trans 'Edit' %}</a>]
+                [<a href="{{ user.id }}/delete/">{% trans 'Delete' %}</a>]
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock content %}

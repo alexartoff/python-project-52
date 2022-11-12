@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv, find_dotenv
 import os
+import rollbar
+import dj_database_url
 
 load_dotenv(find_dotenv())
 
@@ -40,7 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
-    'tasks',
+    'django_filters',
+    'tasks.apps.TasksConfig',
+    'users.apps.UsersConfig',
+    'statuses.apps.StatusesConfig',
+    'labels.apps.LabelsConfig',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -61,6 +68,10 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             'task_manager/templates',
+            'users/templates/users',
+            'statuses/templates/statuses',
+            'tasks/templates/tasks',
+            'labels/templates/labels',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -89,6 +100,8 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+# DATABASES['default'] = dj_database_url.config(default='postgres://...')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -126,7 +139,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale/'), )
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale/'),)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -137,3 +150,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'users.Users'
+
+ROLLBAR = {
+    'access_token': os.getenv('ROLLBAR_KEY'),
+    'environment': 'development' if DEBUG else 'production',
+    'code_version': '1.0',
+    'root': BASE_DIR,
+}
+rollbar.init(**ROLLBAR)
