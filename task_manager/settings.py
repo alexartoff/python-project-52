@@ -67,6 +67,7 @@ MIDDLEWARE = [
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = ['https://*.railway.app', 'https://127.0.0.1', 'https://localhost', ]
 # CSRF_COOKIE_NAME = 'cookiecsrf'
 # CSRF_COOKIE_DOMAIN = [
 #     'webserver',
