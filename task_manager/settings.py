@@ -30,7 +30,13 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['webserver', '127.0.0.1', '.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = [
+    'webserver',
+    '127.0.0.1',
+    '.herokuapp.com',
+    '.railway.app',
+    'localhost'
+]
 
 # Application definition
 
@@ -101,7 +107,7 @@ DATABASES = {
     }
 }
 
-# DATABASES['default'] = dj_database_url.config(default='postgres://...')
+DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -145,6 +151,7 @@ LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale/'),)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
