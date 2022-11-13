@@ -3,7 +3,9 @@ name = "hexlet-code"
 version = "0.1.0"
 description = "education project 'Task manager'"
 authors = ["alexandertarakanov <alex.artoff@gmail.com>"]
-packages = [{ include = "task_manager" },]
+packages = [
+    { include = "task_manager" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -15,10 +17,13 @@ django-bootstrap4 = "^22.2"
 dj-database-url = "^1.0.0"
 django-filter = "^22.1"
 rollbar = "^0.16.3"
-coverage = "^6.5.0"
-flake8 = "^5.0.4"
 
 [tool.poetry.dev-dependencies]
+coverage = "^6.5.0"
+flake8 = "^5.0.4"
+pytest-cov = "^4.0.0"
+pytest = "^7.2.0"
+pytest-django = "^4.5.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

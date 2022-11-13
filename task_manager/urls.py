@@ -30,5 +30,5 @@ urlpatterns = i18n_patterns(
     path('tasks/', include('tasks.urls')),
     path('labels/', include('labels.urls')),
     path('search/', SearchResultView.as_view(), name='search_result'),
-    path('error/', views.error_page)
+    # path('error/', views.error_page)
 )

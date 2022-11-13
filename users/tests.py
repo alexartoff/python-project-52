@@ -43,6 +43,23 @@ class UsersTestCase(TestCase):
                 last_name=' ',
             )
 
+    def test_short_username(self):
+        response = self.client.get(reverse('register_user'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, template_name='register.html')
+        response = self.client.post(
+            reverse('register_user'),
+            {
+                'username': 'bug',
+                'first_name': 'test_user_first_name',
+                'last_name': 'test_user_last_name',
+                'password1': '123qwe!@#',
+                'password2': '123qwe!@#',
+            }
+        )
+        self.assertContains(response, 'is too short! minimum 4 symbols')
+        self.assertNotEqual(response.status_code, 302)
+
     def test_user_register_view(self):
         response = self.client.get(reverse('register_user'))
         self.assertEqual(response.status_code, 200)
@@ -117,7 +134,7 @@ class UsersTestCase(TestCase):
         u = Users.objects.last()
 
         # last user can't delete test_user (from setUp)
-        response = self.client.get(reverse('user_update', kwargs={'pk': u.id}))
+        response = self.client.get(reverse('user_delete', kwargs={'pk': u.id}))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('users_list'))
 
@@ -159,4 +176,14 @@ class UsersTestCase(TestCase):
         self.assertTrue(tasks_qs)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('users_list'))
+        self.assertEqual(Users.objects.count(), 3)
+
+    def test_no_permission_user_delete(self):
+        u = Users.objects.last()
+        response = self.client.get(
+            reverse('user_delete', kwargs={'pk': u.id})
+        )
+        self.assertEqual(response.status_code, 302)
+        response = self.client.get(reverse('users_list'))
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(Users.objects.count(), 3)

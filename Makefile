@@ -13,17 +13,15 @@ kill:
 shell:
 	poetry run python manage.py shell_plus
 
-lint_tm:
+lint:
 	poetry run flake8 task_manager
-
-lint_labels:
 	poetry run flake8 labels
-
-lint_statuses:
 	poetry run flake8 statuses
-
-lint_tasks:
 	poetry run flake8 tasks
-
-lint_users:
 	poetry run flake8 users
+
+tests:
+	poetry run python manage.py test
+
+tests-cov:
+	poetry run pytest

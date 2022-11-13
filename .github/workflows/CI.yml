@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+    - name: Install Dependencies
+      run: |
+        pip install poetry
+        make install
+    - name: Run linter
+      run: |
+        make lint
+    - name: Run Tests
+      run: |
+        make tests
+    - name: Test & publish code coverage
+      uses: paambaati/codeclimate-action@v3.0.0
+      env:
+        CC_TEST_REPORTER_ID: 009e197a4d23aa553cb4f904bf148e231084e6e981300b71a0965e7a9db49b96
+      with:
+        coverageCommand: make test-cov
+        debug: true
