@@ -67,6 +67,9 @@ MIDDLEWARE = [
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
+CSRF_COOKIE_NAME = 'cookiecsrf'
+CSRF_COOKIE_DOMAIN = '.railway.app'
+
 ROOT_URLCONF = 'task_manager.urls'
 
 TEMPLATES = [
@@ -86,6 +89,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.csrf',
             ],
         },
     },

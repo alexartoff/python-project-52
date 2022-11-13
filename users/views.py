@@ -1,6 +1,5 @@
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
-from django.middleware.csrf import CsrfViewMiddleware
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.urls import reverse_lazy
@@ -23,7 +22,7 @@ class UsersListView(ListView):
     extra_context = {'title': _('Users')}
 
 
-class UserRegisterView(SuccessMessageMixin, CsrfViewMiddleware, CreateView):
+class UserRegisterView(SuccessMessageMixin, CreateView):
     form_class = UsersForm
     template_name = 'register.html'
     success_message = _('%(username)s created successfully')
