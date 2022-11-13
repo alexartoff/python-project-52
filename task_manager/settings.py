@@ -59,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -67,8 +67,14 @@ MIDDLEWARE = [
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
-CSRF_COOKIE_NAME = 'cookiecsrf'
-CSRF_COOKIE_DOMAIN = '.railway.app'
+# CSRF_COOKIE_NAME = 'cookiecsrf'
+# CSRF_COOKIE_DOMAIN = [
+#     'webserver',
+#     '127.0.0.1',
+#     '.herokuapp.com',
+#     '.railway.app',
+#     'localhost'
+# ]
 
 ROOT_URLCONF = 'task_manager.urls'
 
@@ -89,7 +95,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.csrf',
+                # 'django.template.context_processors.csrf',
             ],
         },
     },
