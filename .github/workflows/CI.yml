@@ -36,5 +36,5 @@ jobs:
         SECRET_KEY: django-insecure-8+98-dekc$1u%^fd3!i!jw)c6_7ly$tu(15a8no9jedyawxpwv
         CC_TEST_REPORTER_ID: 009e197a4d23aa553cb4f904bf148e231084e6e981300b71a0965e7a9db49b96
       with:
-        coverageCommand: make tests-cov
+        coverageCommand: make tests
         debug: true
