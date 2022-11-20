@@ -228,9 +228,13 @@ msgstr "Да, удалить"
 msgid "Cancel"
 msgstr "Отменить"
 
-#: task_manager/templates/create.html:12 users/templates/users/register.html:12
-msgid "Save"
-msgstr "Сохранить"
+#: task_manager/templates/create.html:12
+msgid "Create"
+msgstr "Создать"
+
+#: users/templates/users/register.html:12
+msgid "Registration"
+msgstr "Зарегистрировать"
 
 #: task_manager/templates/index.html:10
 msgid "Hello"
@@ -240,9 +244,13 @@ msgstr "Привет"
 msgid "This is task manager"
 msgstr "Это менеджер задач"
 
-#: task_manager/templates/login.html:12 users/views.py:94
+#: users/views.py:94
 msgid "Login"
 msgstr "Вход"
+
+#: task_manager/templates/login.html:12
+msgid "Log in"
+msgstr "Войти"
 
 #: task_manager/templates/update.html:12
 msgid "Update"

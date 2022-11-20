@@ -226,8 +226,12 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: task_manager/templates/create.html:12 users/templates/users/register.html:12
-msgid "Save"
+#: task_manager/templates/create.html:12
+msgid "Create"
+msgstr ""
+
+#: users/templates/users/register.html:12
+msgid "Registration"
 msgstr ""
 
 #: task_manager/templates/index.html:10
@@ -238,8 +242,12 @@ msgstr ""
 msgid "This is task manager"
 msgstr ""
 
-#: task_manager/templates/login.html:12 users/views.py:94
+#: users/views.py:94
 msgid "Login"
+msgstr ""
+
+#: task_manager/templates/login.html:12
+msgid "Log in"
 msgstr ""
 
 #: task_manager/templates/update.html:12
