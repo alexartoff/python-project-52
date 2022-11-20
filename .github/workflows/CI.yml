@@ -27,13 +27,13 @@ jobs:
         make lint
     - name: Run Tests
       env:
-        SECRET_KEY: django-insecure-8+98-dekc$1u%^fd3!i!jw)c6_7ly$tu(15a8no9jedyawxpwv
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
         make tests
     - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v3.0.0
       env:
-        SECRET_KEY: django-insecure-8+98-dekc$1u%^fd3!i!jw)c6_7ly$tu(15a8no9jedyawxpwv
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST }}
       with:
         coverageCommand: make tests-cov
