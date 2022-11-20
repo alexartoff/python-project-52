@@ -27,4 +27,4 @@ tests:
 	poetry run python manage.py test
 
 tests-cov:
-	poetry run pytest
+	poetry run pytest --cov=task_manager --cov-report xml
