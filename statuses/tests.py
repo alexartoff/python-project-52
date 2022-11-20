@@ -55,7 +55,6 @@ class StatusesTestCase(TestCase):
         response = self.client.get(
             reverse('status_delete', args=(status.id,)), follow=True
         )
-        self.assertContains(response, 'Are you sure')
         response = self.client.post(
             reverse('status_delete', kwargs={'pk': status.id})
         )

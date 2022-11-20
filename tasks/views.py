@@ -1,7 +1,8 @@
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView
+from django.views.generic import CreateView, UpdateView, DeleteView, \
+    ListView, DetailView
 from django_filters.views import FilterView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -22,6 +23,14 @@ class TasksListView(LoginRequiredMixin, FilterView):
     filterset_class = TaskFilter
     extra_context = {'title': _('Tasks')}
     ordering = ['id']
+
+
+class TaskShowView(LoginRequiredMixin, DetailView):
+    template_name = 'show_task.html'
+    model = Tasks
+    context_object_name = 'task'
+    login_url = reverse_lazy('user_login')
+    extra_context = {'title': _('Show task')}
 
 
 class SearchResultView(ListView):

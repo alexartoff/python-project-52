@@ -46,6 +46,16 @@ class TasksTestCase(TestCase):
             Tasks.objects.all()
         )
 
+    def test_show_task_view(self):
+        task = Tasks.objects.first()
+        response = self.client.get(
+            reverse('show_task', kwargs={'pk': task.id})
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, template_name='show_task.html')
+        self.assertEqual(task.name, "test_task_one")
+        self.assertEqual(task.description, "test_task_one_description")
+
     def test_tasks_create_view(self):
         response = self.client.get(reverse('add_task'))
         self.assertEqual(response.status_code, 200)
@@ -99,7 +109,6 @@ class TasksTestCase(TestCase):
             reverse('task_delete', args=(task.id,)),
             follow=True
         )
-        self.assertContains(response, 'Are you sure')
         response = self.client.post(
             reverse('task_delete', kwargs={'pk': task.id})
         )

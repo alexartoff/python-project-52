@@ -9,8 +9,8 @@
     <form method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <input type="submit" value="{% trans 'Save' %}">
-        <input type="button" value="{% trans 'Cancel' %}" onclick="window.history.go(-1); return false;">
+        <input class="btn btn-success" type="submit" value="{% trans 'Save' %}">
+        <input class="btn btn-primary" type="button" value="{% trans 'Cancel' %}" onclick="window.history.go(-1); return false;">
     </form>
 
 </div>

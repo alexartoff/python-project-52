@@ -4,9 +4,17 @@
 
 {% block content %}
 <div class="container wrapper flex-grow-1">
-
-    <p>content</p>
-    <p>{% trans 'hello' %}</p>
+    <h1 class="my-4">{{ title }}</h1>
+    <div class="card">
+        <div class="card-body p-5 bg-light">
+            <div class="display-4">{% translate 'Hello' %}
+                {% if user.is_authenticated %}, {{ user.username }}!
+                {% endif %}
+            </div>
+            <p class="lead">{% translate 'This is task manager' %}</p>
+            <hr>
+        </div>
+    </div>
 
 </div>
 {% endblock content %}

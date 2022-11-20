@@ -60,7 +60,6 @@ class LabelsTestCase(TestCase):
         response = self.client.get(
             reverse('label_delete', args=(label.id,)), follow=True
         )
-        self.assertContains(response, 'Are you sure')
         response = self.client.post(
             reverse('label_delete', kwargs={'pk': label.id})
         )

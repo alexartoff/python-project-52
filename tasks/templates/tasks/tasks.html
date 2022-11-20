@@ -17,7 +17,7 @@
                 {% bootstrap_field filter.form.executor field_class='ml-3' %}
                 {% bootstrap_field filter.form.labels field_class='ml-3' %}
                 {% bootstrap_field filter.form.own_tasks field_class='ml-3' %}
-                <input type="submit"/>
+                <input class="btn btn-primary" type="submit" value="{% trans 'Show' %}">
             </form>
         </div>
     </div>
@@ -39,7 +39,7 @@
         {% for t in filter.qs %}
         <tr>
             <td>{{ t.id }}</td>
-            <td>{{ t.name }}</td>
+            <td><a href="{{ t.id }}/">{{ t.name }}</a></td>
             <td>{{ t.status }}</td>
             <td><strong>{{ t.author }}</strong></td>
             <td>{{ t.executor }}</td>

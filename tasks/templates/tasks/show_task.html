@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{{ title }}</h1>
+
+    {% if task %}
+    <div class="card">
+        <div class="card-header bg-secondary text-white">
+            <h2>{{ task.name }}</h2>
+        </div>
+        <div class="card-body bg-light">
+            <p>{{ task.description }}</p>
+            <hr>
+            <div class="container">
+                <div class="row p-1">
+                    <div class="col">{% trans 'Author' %}</div>
+                    <div class="col">{{ task.author }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">{% trans 'Executor' %}</div>
+                    <div class="col">{{ task.executor }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">{% trans 'Status' %}</div>
+                    <div class="col">{{ task.status }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">{% trans 'Created' %}</div>
+                    <div class="col">{{ task.created_date|date:"d.m.Y" }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">
+                        <h6>{% trans 'Labels' %}:</h6>
+                        <ul>
+                            {% if task.labels.all %}
+                            {% for tl in task.labels.all %}
+                            <li>{{ tl.name }}</li>
+                            {% endfor %}
+                            {% else %}
+                            <p>{% trans 'Task without any label' %}</p>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">
+                        <a class="btn btn-primary" href="update/">{% trans 'Edit' %}</a>
+                        <a class="btn btn-danger" href="delete/">{% trans 'Delete' %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+
+</div>
+{% endblock content %}

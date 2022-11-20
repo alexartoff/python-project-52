@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% load bootstrap4 %}
     {% load i18n %}
@@ -8,7 +9,9 @@
     <meta charset="UTF-8">
     <title>{{ title }}</title>
 </head>
+
 <body class="d-flex flex-column min-vh-100">
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
     <a class="navbar-brand" href="{% url 'index_page' %}">{% translate 'Task manager' %}</a>
     <ul class="navbar-nav ml-2 mr-2">
@@ -55,14 +58,33 @@
         <a style="font-size: 12px; color: grey; margin-bottom: -2px; margin-left: 5px;"
            href="/{{ languages.1.code }}/">RU</a>
         <form class="form-inline my-2 my-lg-0" action="{% url 'search_result' %}" method="get">
-            <input class="form-control ml-3 mr-sm-2" type="search" name="q" placeholder="{% trans 'Search task' %}" aria-label="Search">
+            <input class="form-control ml-3 mr-sm-2" type="search" name="q" placeholder="{% trans 'Search task' %}"
+                   aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans 'Search' %}</button>
         </form>
     </div>
 </nav>
+
 <div class="container wrapper flex-grow-1">
     {% bootstrap_messages %}
 </div>
+
 {% block content %}{% endblock content %}
+
+<footer>
+    <div class="container my-5 pt-4 border-top text-center">
+        <a class="text-muted text-decoration-none"
+           target="_blank" href="https://github.com/alexartoff/python-project-52">
+            {% trans 'GitHub project link' %}
+        </a>
+        <br>
+        <a class="text-muted text-decoration-none lh-1"
+           target="_blank" href="https://github.com/alexartoff">
+            {% trans 'My GitHub' %}
+        </a>
+    </div>
+</footer>
+
 </body>
+
 </html>

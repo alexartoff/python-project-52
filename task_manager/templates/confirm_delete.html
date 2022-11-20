@@ -10,8 +10,8 @@
         {% csrf_token %}
         <p>{% trans 'Are you sure want delete' %} "{{ object }}"?</p>
         {{ form }}
-        <input type="submit" value="{% trans 'Confirm' %}">
-        <input type="button" value="{% trans 'Cancel' %}" onclick="window.history.go(-1); return false;">
+        <input class="btn btn-danger" type="submit" value="{% trans 'Confirm' %}">
+        <input class="btn btn-primary" type="button" value="{% trans 'Cancel' %}" onclick="window.history.go(-1); return false;">
     </form>
 
 </div>

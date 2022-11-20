@@ -142,7 +142,6 @@ class UsersTestCase(TestCase):
         self.client.force_login(u)
         response = self.client.get(reverse('user_delete', kwargs={'pk': u.id}))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Are you sure')
         self.assertTemplateUsed(response, template_name='confirm_delete.html')
 
         response = self.client.post(
@@ -167,7 +166,6 @@ class UsersTestCase(TestCase):
         self.client.force_login(u)
         response = self.client.get(reverse('user_delete', kwargs={'pk': u.id}))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Are you sure')
         self.assertTemplateUsed(response, template_name='confirm_delete.html')
 
         response = self.client.post(
