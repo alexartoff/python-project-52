@@ -31,4 +31,5 @@ urlpatterns = i18n_patterns(
     path('labels/', include('labels.urls')),
     path('search/', SearchResultView.as_view(), name='search_result'),
     # path('error/', views.error_page)
+    prefix_default_language=False
 )

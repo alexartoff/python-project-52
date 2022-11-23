@@ -417,7 +417,7 @@ msgstr "Успешный вход"
 
 #: users/views.py:99
 msgid "Error! Enter correct username & password."
-msgstr "Введите вырные имя пользователя и пароль"
+msgstr "Введите верные имя пользователя и пароль"
 
 #: users/views.py:105
 msgid "Successfully logout"
