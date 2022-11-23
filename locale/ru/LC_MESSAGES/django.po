@@ -413,7 +413,7 @@ msgstr "Нельзя удалить"
 
 #: users/views.py:92
 msgid "Successfully login"
-msgstr "Успешный вход"
+msgstr "Вы залогинены"
 
 #: users/views.py:99
 msgid "Error! Enter correct username & password."
