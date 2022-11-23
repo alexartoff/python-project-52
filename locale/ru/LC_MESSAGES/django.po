@@ -98,11 +98,11 @@ msgstr "%(name)s успешно изменено"
 
 #: labels/views.py:39
 msgid "Update label"
-msgstr "Изменить метку"
+msgstr "Изменение метки"
 
 #: labels/views.py:46
 msgid "Delete label"
-msgstr "Удалить метку"
+msgstr "Удаление метки"
 
 #: labels/views.py:53 statuses/views.py:53 tasks/views.py:87 users/views.py:82
 msgid "Successfully deleted"
@@ -110,7 +110,7 @@ msgstr "Успешно удалено"
 
 #: labels/views.py:59
 msgid "Error! Can't delete, label in use"
-msgstr "Метка используется! Удалить нельзя"
+msgstr "Невозможно удалить метку, потому что она используется"
 
 #: statuses/apps.py:8
 msgid "=Task's status="
@@ -151,7 +151,7 @@ msgstr "Создать статус"
 
 #: statuses/views.py:39
 msgid "Update status"
-msgstr "Изменить статус"
+msgstr "Изменение статуса"
 
 #: statuses/views.py:46
 msgid "Delete status"
@@ -159,7 +159,7 @@ msgstr "Удалить статус"
 
 #: statuses/views.py:59
 msgid "Error! Can't delete, status in use"
-msgstr "Статус используется! Удалить нельзя"
+msgstr "Невозможно удалить статус, потому что он используется"
 
 #: task_manager/forms.py:10 users/models.py:10
 #: users/templates/users/users.html:13
@@ -334,7 +334,7 @@ msgstr "Удаление задачи"
 
 #: tasks/views.py:93
 msgid "Error! Can't delete, task not done"
-msgstr "Задача не выполнена! Удалить нельзя"
+msgstr "Задачу может удалить только её автор"
 
 #: users/apps.py:7
 msgid "=Task's user="
@@ -401,7 +401,7 @@ msgstr "Изменение пользователя"
 
 #: users/views.py:56 users/views.py:76
 msgid "You have't permission!"
-msgstr "У вас нет прав для выполнения данной операции"
+msgstr "У вас нет прав для изменения другого пользователя."
 
 #: users/views.py:69
 msgid "Delete user"
@@ -417,8 +417,8 @@ msgstr "Вы залогинены"
 
 #: users/views.py:99
 msgid "Error! Enter correct username & password."
-msgstr "Введите верные имя пользователя и пароль"
+msgstr "Пожалуйста, введите правильные имя пользователя и пароль. Оба поля могут быть чувствительны к регистру."
 
 #: users/views.py:105
 msgid "Successfully logout"
-msgstr "Успешный выход"
+msgstr "Вы разлогинены"

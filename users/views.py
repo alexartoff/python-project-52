@@ -1,5 +1,5 @@
-from django.contrib.auth import login
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import login, logout
+from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.urls import reverse_lazy
@@ -101,6 +101,7 @@ class UserLoginView(SuccessMessageMixin, LoginView):
         return redirect(reverse_lazy('user_login'))
 
 
-class UserLogoutView(SuccessMessageMixin, LogoutView):
-    success_message = _('Successfully logout')
-    next_page = reverse_lazy('index_page')
+def logout_user(request):
+    logout(request)
+    messages.info(request, _('Successfully logout'))
+    return redirect('index_page')
