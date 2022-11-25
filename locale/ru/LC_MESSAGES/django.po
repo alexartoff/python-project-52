@@ -104,9 +104,13 @@ msgstr "Изменение метки"
 msgid "Delete label"
 msgstr "Удаление метки"
 
-#: labels/views.py:53 statuses/views.py:53 tasks/views.py:87 users/views.py:82
+#: labels/views.py:53 statuses/views.py:53 tasks/views.py:87
 msgid "Successfully deleted"
 msgstr "Успешно удалено"
+
+#: users/views.py:82
+msgid "Successfully deleted"
+msgstr "Пользователь успешно удалён"
 
 #: labels/views.py:59
 msgid "Error! Can't delete, label in use"
@@ -393,7 +397,7 @@ msgstr "Регистрация"
 #: users/views.py:42
 #, python-format
 msgid "%(username)s successfully changed"
-msgstr "%(username)s успешно изменён"
+msgstr "Пользователь успешно изменён"
 
 #: users/views.py:44
 msgid "Update user"

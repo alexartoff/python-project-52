@@ -48,9 +48,10 @@ class UserUpdateView(
         return obj.username == self.request.user.username
 
     def form_valid(self, form):
-        obj = form.save()
-        login(self.request, obj)
-        return redirect(reverse_lazy('index_page'))
+        form.save()
+        # login(self.request, obj)
+        messages.info(self.request, _('%(username)s successfully changed'))
+        return redirect(reverse_lazy('users_list'))
 
     def handle_no_permission(self):
         messages.error(self.request, _("You have't permission!"))
