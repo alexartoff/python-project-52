@@ -384,7 +384,7 @@ msgstr "Полное имя"
 #: users/views.py:28
 #, python-format
 msgid "%(username)s created successfully"
-msgstr "%(username)s создан успешно"
+msgstr "Пользователь успешно зарегистрирован"
 
 #: users/views.py:30
 msgid "Create user"
