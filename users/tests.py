@@ -128,7 +128,7 @@ class UsersTestCase(TestCase):
         self.assertEqual(u.first_name, 'user_update_first_name')
         self.assertEqual(u.last_name, 'user_update_last_name')
         self.assertTrue(u.check_password('123qwe!@#'))
-        self.assertRedirects(response, reverse('index_page'))
+        self.assertRedirects(response, reverse('users_list'))
 
     def test_user_delete_view(self):
         u = Users.objects.last()
