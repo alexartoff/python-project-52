@@ -55,7 +55,7 @@ class SearchResultView(ListView):
 class TaskCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     form_class = TaskForm
     template_name = 'create.html'
-    success_message = _("Task '%(name)s' created successfully")
+    success_message = _("Task created successfully")
     success_url = reverse_lazy('tasks_list')
     login_url = reverse_lazy('user_login')
     extra_context = {'title': _('Create task')}
@@ -69,7 +69,7 @@ class TaskUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Tasks
     form_class = TaskForm
     template_name = 'update.html'
-    success_message = _('%(name)s successfully changed')
+    success_message = _('Task successfully changed')
     success_url = reverse_lazy('tasks_list')
     extra_context = {'title': _('Update task')}
 

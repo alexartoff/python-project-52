@@ -1,4 +1,4 @@
-from django.contrib.auth import login, logout
+from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect
 from django.contrib import messages
@@ -25,7 +25,7 @@ class UsersListView(ListView):
 class UserRegisterView(SuccessMessageMixin, CreateView):
     form_class = UsersForm
     template_name = 'register.html'
-    success_message = _('%(username)s created successfully')
+    success_message = _('User created successfully')
     success_url = reverse_lazy('user_login')
     extra_context = {'title': _('Create user')}
 
@@ -39,7 +39,7 @@ class UserUpdateView(
     model = Users
     form_class = UsersForm
     template_name = 'update.html'
-    success_message = _('%(username)s successfully changed')
+    success_message = _('User successfully changed')
     success_url = reverse_lazy('users_list')
     extra_context = {'title': _('Update user')}
 
@@ -50,7 +50,7 @@ class UserUpdateView(
     def form_valid(self, form):
         form.save()
         # login(self.request, obj)
-        messages.info(self.request, _('%(username)s successfully changed'))
+        messages.info(self.request, _('User successfully changed'))
         return redirect(reverse_lazy('users_list'))
 
     def handle_no_permission(self):
