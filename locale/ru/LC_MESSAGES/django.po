@@ -84,17 +84,27 @@ msgstr "Метки"
 
 #: labels/views.py:27
 #, python-format
-msgid "Label '%(name)s' created successfully"
-msgstr "Метка '%(name)s' создана успешно"
+msgid "Label created successfully"
+msgstr "Метка успешно создана"
 
 #: labels/views.py:30
 msgid "Create label"
 msgstr "Создать метку"
 
-#: labels/views.py:37 statuses/views.py:37 tasks/views.py:71
+#: labels/views.py:37
 #, python-format
-msgid "%(name)s successfully changed"
-msgstr "%(name)s успешно изменено"
+msgid "Label successfully changed"
+msgstr "Метка успешно изменена"
+
+#: statuses/views.py:37
+#, python-format
+msgid "Status successfully changed"
+msgstr "Статус успешно изменён"
+
+#: tasks/views.py:71
+#, python-format
+msgid "Task successfully changed"
+msgstr "Задача успешно изменена"
 
 #: labels/views.py:39
 msgid "Update label"
@@ -104,12 +114,20 @@ msgstr "Изменение метки"
 msgid "Delete label"
 msgstr "Удаление метки"
 
-#: labels/views.py:53 statuses/views.py:53 tasks/views.py:87
-msgid "Successfully deleted"
-msgstr "Успешно удалено"
+#: labels/views.py:53
+msgid "Label successfully deleted"
+msgstr "Метка успешно удалена"
+
+#: statuses/views.py:53
+msgid "Status successfully deleted"
+msgstr "Статус успешно удалён"
+
+#: tasks/views.py:87
+msgid "Task successfully deleted"
+msgstr "Задача успешно удалена"
 
 #: users/views.py:82
-msgid "Successfully deleted"
+msgid "User successfully deleted"
 msgstr "Пользователь успешно удалён"
 
 #: labels/views.py:59
@@ -146,8 +164,8 @@ msgstr "Статусы"
 
 #: statuses/views.py:27
 #, python-format
-msgid "Status '%(name)s' created successfully"
-msgstr "Статус '%(name)s' создан успешно"
+msgid "Status created successfully"
+msgstr "Статус успешно создан"
 
 #: statuses/views.py:30
 msgid "Create status"
@@ -321,8 +339,8 @@ msgstr "Результаты поиска"
 
 #: tasks/views.py:57
 #, python-format
-msgid "Task '%(name)s' created successfully"
-msgstr "Задача '%(name)s' создана успешно"
+msgid "Task created successfully"
+msgstr "Задача успешно создана"
 
 #: tasks/views.py:60
 msgid "Create task"
@@ -387,7 +405,7 @@ msgstr "Полное имя"
 
 #: users/views.py:28
 #, python-format
-msgid "%(username)s created successfully"
+msgid "User created successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
 #: users/views.py:30
@@ -396,7 +414,7 @@ msgstr "Регистрация"
 
 #: users/views.py:42
 #, python-format
-msgid "%(username)s successfully changed"
+msgid "User successfully changed"
 msgstr "Пользователь успешно изменён"
 
 #: users/views.py:44

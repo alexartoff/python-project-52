@@ -85,7 +85,7 @@ class TaskDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
             self.delete(request, *args, **kwargs)
             messages.success(
                 self.request,
-                _('Successfully deleted')
+                _('Task successfully deleted')
             )
             return redirect(reverse_lazy('tasks_list'))
         except ProtectedError:

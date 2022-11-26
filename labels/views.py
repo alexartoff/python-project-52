@@ -50,7 +50,7 @@ class LabelDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
             self.delete(request, *args, **kwargs)
             messages.success(
                 self.request,
-                _('Successfully deleted')
+                _('Label successfully deleted')
             )
             return redirect(reverse_lazy('labels_list'))
         except ProtectedError:

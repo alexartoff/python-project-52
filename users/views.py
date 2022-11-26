@@ -80,7 +80,7 @@ class UserDeleteView(
     def post(self, request, *args, **kwargs):
         try:
             self.delete(request, *args, **kwargs)
-            messages.success(self.request, _('Successfully deleted'))
+            messages.success(self.request, _('User successfully deleted'))
             return redirect(reverse_lazy('users_list'))
         except ProtectedError:
             messages.error(self.request, _("Error! Can't delete"))

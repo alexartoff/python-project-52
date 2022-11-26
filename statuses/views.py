@@ -50,7 +50,7 @@ class StatusDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
             self.delete(request, *args, **kwargs)
             messages.success(
                 self.request,
-                _('Successfully deleted')
+                _('Status successfully deleted')
             )
             return redirect(reverse_lazy('statuses_list'))
         except ProtectedError:
