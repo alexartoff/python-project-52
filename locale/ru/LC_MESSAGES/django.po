@@ -82,6 +82,10 @@ msgstr "Удалить"
 msgid "Labels"
 msgstr "Метки"
 
+#: tasks/filter.py:17
+msgid "Label"
+msgstr "Метка"
+
 #: labels/views.py:27
 #, python-format
 msgid "Label created successfully"
@@ -286,7 +290,7 @@ msgstr "=Задача="
 msgid "=Tasks="
 msgstr "=Задачи="
 
-#: tasks/filter.py:11
+#: tasks/filter.py:13
 msgid "Show own tasks"
 msgstr "Только свои задачи"
 

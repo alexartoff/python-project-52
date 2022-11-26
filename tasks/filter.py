@@ -1,5 +1,7 @@
 import django_filters
 from django import forms
+
+from labels.models import Labels
 from tasks.models import Tasks
 from django.utils.translation import gettext_lazy as _
 
@@ -9,6 +11,10 @@ class TaskFilter(django_filters.FilterSet):
         method='show_own_task',
         widget=forms.CheckboxInput,
         label=_('Show own tasks'),
+    )
+    labels = django_filters.ModelChoiceFilter(
+        queryset=Labels.objects.all(),
+        label=_('Label'),
     )
 
     def show_own_task(self, queryset, name, value):

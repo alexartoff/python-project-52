@@ -37,7 +37,8 @@
             </li>
         </ul>
         <span class="navbar-text ml-auto">
-            {% trans "You're logged in as" %} {{ user.username }} | <a href="{% url 'user_logout' %}">{% trans 'Logout' %}</a>
+            {% trans "You're logged in as" %} <strong class="text-info">{{ user.username }}</strong> | <a
+                href="{% url 'user_logout' %}">{% trans 'Logout' %}</a>
         </span>
         {% else %}
         <ul class="navbar-nav ml-auto">
