@@ -3,6 +3,6 @@ from django.utils.translation import gettext_lazy as _
 
 
 class TasksConfig(AppConfig):
-    name = 'tasks'
+    name = 'task_manager.tasks'
     verbose_name = _("=Task=")
     verbose_name_plural = _("=Tasks=")

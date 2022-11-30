@@ -18,10 +18,10 @@ shell:
 
 lint:
 	poetry run flake8 task_manager
-	poetry run flake8 labels
-	poetry run flake8 statuses
-	poetry run flake8 tasks
-	poetry run flake8 users
+	poetry run flake8 task_manager/labels
+	poetry run flake8 task_manager/statuses
+	poetry run flake8 task_manager/tasks
+	poetry run flake8 task_manager/users
 
 tests:
 	poetry run python manage.py test

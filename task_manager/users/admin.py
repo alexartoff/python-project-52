@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from users.models import Users
+from task_manager.users.models import Users
 
 
 class UsersAdmin(admin.ModelAdmin):

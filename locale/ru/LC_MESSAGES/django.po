@@ -358,9 +358,13 @@ msgstr "Изменение задачи"
 msgid "Delete task"
 msgstr "Удаление задачи"
 
-#: tasks/views.py:93
-msgid "Error! Can't delete, task not done"
+#: tasks/views.py:104
+msgid "Error! You can't delete this task. Only author"
 msgstr "Задачу может удалить только её автор"
+
+#: tasks/views.py:97
+msgid "Error! You are not authenticated"
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
 #: users/apps.py:7
 msgid "=Task's user="
@@ -427,7 +431,7 @@ msgstr "Изменение пользователя"
 
 #: users/views.py:56 users/views.py:76
 msgid "You have't permission!"
-msgstr "У вас нет прав для изменения другого пользователя."
+msgstr "У Вас нет прав для выполнения данной операции"
 
 #: users/views.py:69
 msgid "Delete user"

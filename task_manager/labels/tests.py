@@ -3,10 +3,10 @@ from django.test import TestCase
 from django.test import Client
 from django.urls import reverse
 
-from labels.models import Labels
-from statuses.models import Statuses
-from tasks.models import Tasks, TaskRelationLabel
-from users.models import Users
+from task_manager.labels.models import Labels
+from task_manager.statuses.models import Statuses
+from task_manager.tasks.models import Tasks, TaskRelationLabel
+from task_manager.users.models import Users
 
 
 class LabelsTestCase(TestCase):

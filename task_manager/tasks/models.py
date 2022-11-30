@@ -1,8 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from users.models import Users
-from statuses.models import Statuses
-from labels.models import Labels
+from task_manager.users.models import Users
+from task_manager.statuses.models import Statuses
+from task_manager.labels.models import Labels
 
 
 # Create your models here.

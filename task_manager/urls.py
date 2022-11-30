@@ -16,19 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from task_manager import views
-from users.views import UserLoginView, logout_user
+from task_manager.users.views import UserLoginView, logout_user
 from django.conf.urls.i18n import i18n_patterns
-from tasks.views import SearchResultView
+from task_manager.tasks.views import SearchResultView
 
 urlpatterns = i18n_patterns(
     path('', views.IndexView.as_view(), name='index_page'),
     path('admin/', admin.site.urls),
     path('login/', UserLoginView.as_view(), name='user_login'),
     path('logout/', logout_user, name='user_logout'),
-    path('users/', include('users.urls')),
-    path('statuses/', include('statuses.urls')),
-    path('tasks/', include('tasks.urls')),
-    path('labels/', include('labels.urls')),
+    path('users/', include('task_manager.users.urls')),
+    path('statuses/', include('task_manager.statuses.urls')),
+    path('tasks/', include('task_manager.tasks.urls')),
+    path('labels/', include('task_manager.labels.urls')),
     path('search/', SearchResultView.as_view(), name='search_result'),
     # path('error/', views.error_page)
     prefix_default_language=False

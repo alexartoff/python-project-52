@@ -2,9 +2,9 @@ from django.test import TestCase
 from django.test import Client
 from django.urls import reverse
 
-from statuses.models import Statuses
-from tasks.models import Tasks
-from users.models import Users
+from task_manager.statuses.models import Statuses
+from task_manager.tasks.models import Tasks
+from task_manager.users.models import Users
 
 
 class TasksTestCase(TestCase):
@@ -115,3 +115,44 @@ class TasksTestCase(TestCase):
         self.assertNotContains(response, 'task_delete', status_code=302)
         self.assertRedirects(response, reverse('tasks_list'))
         self.assertEqual(Tasks.objects.count(), 1)
+
+    def test_task_invalid_delete(self):
+        task = Tasks.objects.last()
+        self.client.force_login(self.executor)
+        request = self.client.post(
+            reverse('task_delete', kwargs={'pk': task.id})
+        )
+        self.assertRedirects(request, reverse('tasks_list'))
+        self.assertEqual(Tasks.objects.count(), 2)
+
+    def test_task_status_filter(self):
+        self.assertEqual(
+            Tasks.objects.filter(status__name="test_status").count(),
+            2
+        )
+
+    def test_task_executor_filter(self):
+        self.assertEqual(
+            Tasks.objects.filter(executor__username='test_executor').count(),
+            2
+        )
+
+    def test_own_task_filter(self):
+        someuser = Users.objects.create_user(
+            username='someuser',
+            password='12345'
+        )
+        Tasks.objects.create(
+            name='test_task_three',
+            author=someuser,
+            description='test_task_three_description',
+            status=self.status,
+            executor=self.executor,
+        )
+        c = Client()
+        c.force_login(someuser)
+        self.assertEqual(
+            Tasks.objects.filter(author__username='someuser').count(),
+            1
+        )
+        self.assertEqual(Tasks.objects.count(), 3)

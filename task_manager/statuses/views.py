@@ -36,6 +36,7 @@ class StatusUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     template_name = 'update.html'
     success_message = _('Status successfully changed')
     success_url = reverse_lazy('statuses_list')
+    login_url = reverse_lazy('user_login')
     extra_context = {'title': _('Update status')}
 
 
@@ -43,6 +44,7 @@ class StatusDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Statuses
     success_url = reverse_lazy('statuses_list')
     template_name = 'confirm_delete.html'
+    login_url = reverse_lazy('user_login')
     extra_context = {'title': _('Delete status')}
 
     def post(self, request, *args, **kwargs):

@@ -36,6 +36,7 @@ class LabelUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     template_name = 'update.html'
     success_message = _('Label successfully changed')
     success_url = reverse_lazy('labels_list')
+    login_url = reverse_lazy('user_login')
     extra_context = {'title': _('Update label')}
 
 
@@ -43,6 +44,7 @@ class LabelDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Labels
     success_url = reverse_lazy('labels_list')
     template_name = 'confirm_delete.html'
+    login_url = reverse_lazy('user_login')
     extra_context = {'title': _('Delete label')}
 
     def post(self, request, *args, **kwargs):

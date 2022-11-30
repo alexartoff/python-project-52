@@ -5,14 +5,14 @@ from django.views.generic import CreateView, UpdateView, DeleteView, \
     ListView, DetailView
 from django_filters.views import FilterView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import ProtectedError
+from django.contrib.auth.mixins import LoginRequiredMixin, \
+    PermissionRequiredMixin
 from django.utils.translation import gettext_lazy as _
 from django.db.models import Q
 
 from .forms import TaskForm
 from .models import Tasks
-from users.models import Users
+from task_manager.users.models import Users
 from .filter import TaskFilter
 
 
@@ -71,26 +71,37 @@ class TaskUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     template_name = 'update.html'
     success_message = _('Task successfully changed')
     success_url = reverse_lazy('tasks_list')
+    login_url = reverse_lazy('user_login')
     extra_context = {'title': _('Update task')}
 
 
-class TaskDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
+class TaskDeleteView(
+    SuccessMessageMixin,
+    PermissionRequiredMixin,
+    LoginRequiredMixin,
+    DeleteView
+):
     model = Tasks
     success_url = reverse_lazy('tasks_list')
     template_name = 'confirm_delete.html'
+    login_url = reverse_lazy('user_login')
     extra_context = {'title': _('Delete task')}
 
-    def post(self, request, *args, **kwargs):
-        try:
-            self.delete(request, *args, **kwargs)
-            messages.success(
-                self.request,
-                _('Task successfully deleted')
-            )
-            return redirect(reverse_lazy('tasks_list'))
-        except ProtectedError:
+    def has_permission(self) -> bool:
+        return self.get_object().author.pk == self.request.user.pk
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
             messages.error(
                 self.request,
-                _("Error! Can't delete, task not done")
+                _("Error! You are not authenticated")
             )
-            return redirect(reverse_lazy('tasks_list'))
+            return self.handle_no_permission()
+
+        elif not self.has_permission():
+            messages.error(
+                request,
+                _("Error! You can't delete this task. Only author")
+            )
+            return redirect('tasks_list')
+        return super().dispatch(request, *args, **kwargs)

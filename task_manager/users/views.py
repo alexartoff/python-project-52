@@ -41,6 +41,7 @@ class UserUpdateView(
     template_name = 'update.html'
     success_message = _('User successfully changed')
     success_url = reverse_lazy('users_list')
+    login_url = reverse_lazy('user_login')
     extra_context = {'title': _('Update user')}
 
     def test_func(self):
@@ -49,7 +50,6 @@ class UserUpdateView(
 
     def form_valid(self, form):
         form.save()
-        # login(self.request, obj)
         messages.info(self.request, _('User successfully changed'))
         return redirect(reverse_lazy('users_list'))
 
@@ -67,6 +67,7 @@ class UserDeleteView(
     model = Users
     success_url = reverse_lazy('users_list')
     template_name = 'confirm_delete.html'
+    login_url = reverse_lazy('user_login')
     extra_context = {'title': _('Delete user')}
 
     def test_func(self):

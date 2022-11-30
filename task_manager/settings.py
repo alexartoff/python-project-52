@@ -58,10 +58,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'django_filters',
-    'tasks.apps.TasksConfig',
-    'users.apps.UsersConfig',
-    'statuses.apps.StatusesConfig',
-    'labels.apps.LabelsConfig',
+    'task_manager.tasks.apps.TasksConfig',
+    'task_manager.users.apps.UsersConfig',
+    'task_manager.statuses.apps.StatusesConfig',
+    'task_manager.labels.apps.LabelsConfig',
 ]
 
 MIDDLEWARE = [
@@ -89,10 +89,10 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             'task_manager/templates',
-            'users/templates/users',
-            'statuses/templates/statuses',
-            'tasks/templates/tasks',
-            'labels/templates/labels',
+            'task_manager/templates/users',
+            'task_manager/templates/statuses',
+            'task_manager/templates/tasks',
+            'task_manager/templates/labels',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
