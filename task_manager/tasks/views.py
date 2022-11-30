@@ -84,6 +84,7 @@ class TaskDeleteView(
     model = Tasks
     success_url = reverse_lazy('tasks_list')
     template_name = 'confirm_delete.html'
+    success_message = _('Task successfully deleted')
     login_url = reverse_lazy('user_login')
     extra_context = {'title': _('Delete task')}
 
